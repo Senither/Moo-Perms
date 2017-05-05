@@ -1,0 +1,128 @@
+############################################################
+# +------------------------------------------------------+ #
+# |                  Table of Content                    | #
+# +------------------------------------------------------+ #
+############################################################
+#
+# (1) Different default stages
+# (2) Permission setup and examples
+#
+
+############################################################
+# +------------------------------------------------------+ #
+# |             1. Different Default Stages              | #
+# +------------------------------------------------------+ #
+############################################################
+#
+# All permissions by default belong to a stage, for the most 
+# part the permission stage will be handled behind the,
+# scene, the same goes for MooPerms, however here you have
+# the option to add a default stage for any parent 
+# permission node you want, the avaliable stages are:
+
+#     - false : Will hold back the permission for groups only
+#     - true  : Will give the permission to everyone
+#     - op    : Will give the permission to operators
+#
+# If the default stage is not included for any permission
+# MooPerms will default back to false, so that no one gets 
+# permissions that they shouldn't have, nor want.
+# 
+# +----------------------+ Notice +-----------------------+ #
+# If you want to use the 'true' option for default stages 
+# you should be aware that permission updating is not 
+# possible once the permissions has been loaded into the 
+# server, either via a complete reload, restart or 
+# configuration reload, to remove parent permission groups 
+# with a default stage of 'true', you will have to reload or 
+# reboot the entire server, this is due to how player 
+# permission attachement works and how they update.
+# Because of this, it is recommended that you use the default 
+# false stage, or simply just completely leave off this option 
+# and let the MooPerms handle it itself.
+#
+
+############################################################
+# +------------------------------------------------------+ #
+# |           2. Permission Setups & Examples            | #
+# +------------------------------------------------------+ #
+############################################################
+#
+# Below you'll find some simple permission setups, howerver
+# please note that the main permission node have to be,
+# 'permissions', otherwise MooPerms won't be able to find 
+# the permissions.
+#
+
+
+# Sets up our main node so MooPerms can find the permissions
+permissions:
+    
+    # A single permission group, this can be whatever you want 
+    # as long as it is valid yml, the node isnt used for 
+    # anything but loading the permission into memory and 
+    # giving it a preset.
+    single_example:
+        
+        # This is the custom permission node that will be added
+        # to zPermissions, GroupManager, bPermissions, etc..
+        #
+        # You should try and make a permission that doesn't 
+        # exists already so no existing permissions are 
+        # overwritten in the process.
+        parent: 'some.parent.perm'
+        
+        # This is a single child permission node carrier, 
+        # this means that players with the 'some.parent.perm'
+        # permission will get 'some.child.perm'.
+        child: 'some.child.perm'
+    
+    # This is a multiple permission group, again this can 
+    # be whatever you want as long as it is valid yml.
+    multiple_example:
+        
+        # This is the custom permission node that will be added
+        # to zPermissions, GroupManager, bPermissions, etc..
+        #
+        # You should try and make a permission that doesn't 
+        # exists already so no existing permissions are 
+        # overwritten in the process.
+        parent: 'some.other.perm'
+        
+        # This is a multiple child permission node carrier, 
+        # this means that players with the 'some.other.perm'
+        # permission will get 'child.node.1', 'child.node.2' 
+        # and 'child.node.3'.
+        children:
+            - 'child.node.1'
+            - 'child.node.2'
+            - 'child.node.3'
+    
+    # This is a default permission group that anyone will 
+    # get, regardless of their rank.
+    default_example:
+        
+        # This is the default stage, to see all the 
+        # options, pros and cons of using this, checkout 
+        # the first part of the example, this field is 
+        # not required, if it is left out it will default 
+        # to fase.
+        default: true
+        
+        # This is the custom permission node that will be added
+        # to zPermissions, GroupManager, bPermissions, etc..
+        #
+        # You should try and make a permission that doesn't 
+        # exists already so no existing permissions are 
+        # overwritten in the process.
+        parent: 'public.custon.perm'
+        
+        # This is a multiple child permission node carrier, 
+        # this means that players with the 'public.custom.perm'
+        # permission will get 'child.node.1', 'child.node.2' 
+        # and 'child.node.3'.
+        children:
+            - 'child.node.1'
+            - 'child.node.2'
+            - 'child.node.3'
+        

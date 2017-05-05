@@ -1,0 +1,11 @@
+name: MooPerms
+main: com.sendev.mooperms.MooPerms
+version: 1.0
+author: Senither
+authors: [Senither, SenDevelopment]
+softdepend: [EZRanksPro, Lockette, GangsPlus]
+
+commands:
+    mooperm:
+        description: MooPerm commands
+        aliases: [mooperms, cowperms, cowcraftperms, moopermission, moopermissions]
